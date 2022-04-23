@@ -1,3 +1,7 @@
+import { storeItemList } from "./index.js";
+import { isItemInCart } from "./addToCart.js";
+import { addToCart } from "./addToCart.js";
+
 function createStoreItem(item) {
   const itemStoreLI = document.createElement("li");
 
@@ -12,9 +16,20 @@ function createStoreItem(item) {
 
   const addToCartButton = document.createElement("button");
   addToCartButton.innerText = "Add to cart";
+  addToCartButton.addEventListener("click", () => {
+    if (!isItemInCart(item)) {
+      addToCart(item);
+    }
+  });
+
   itemStoreLI.append(addToCartButton);
 
   return itemStoreLI;
 }
 
-export { createStoreItem };
+function renderStoreItemList(item) {
+  const newStoreItem = createStoreItem(item);
+  storeItemList.append(newStoreItem);
+}
+
+export { createStoreItem, renderStoreItemList };
