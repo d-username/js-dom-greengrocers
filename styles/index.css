@@ -53,6 +53,20 @@ button {
   height: 125px;
 }
 
+.filterContainer {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.sortContainer {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
 @media only screen and (max-width: 600px) {
   .store--item-list {
     grid-template-columns: repeat(3, 125px);

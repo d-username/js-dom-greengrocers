@@ -10,7 +10,8 @@ const radioFruit = document.querySelector(".radioFruit");
 const radioVegetable = document.querySelector(".radioVegetable");
 const radioAll = document.querySelector(".radioAll");
 const radioABC = document.querySelector(".radioABC");
-const radioPrice = document.querySelector(".radioPrice");
+const radioPriceIncreasing = document.querySelector(".radioPriceIncreasing");
+const radioPriceDecreasing = document.querySelector(".radioPriceDecreasing");
 
 state.items.forEach((item) => {
   renderStoreItemList(item);
@@ -32,7 +33,11 @@ radioABC.addEventListener("click", () => {
   sortItems();
 });
 
-radioPrice.addEventListener("click", () => {
+radioPriceIncreasing.addEventListener("click", () => {
+  sortItems();
+});
+
+radioPriceDecreasing.addEventListener("click", () => {
   sortItems();
 });
 
