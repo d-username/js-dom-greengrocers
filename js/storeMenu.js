@@ -1,9 +1,12 @@
 import { storeItemList } from "./index.js";
-import { isItemInCart } from "./addToCart.js";
-import { addToCart } from "./addToCart.js";
+import { isItemInCart, addToCart } from "./addToCart.js";
 
 function createStoreItem(item) {
   const itemStoreLI = document.createElement("li");
+
+  const itemStoreName = document.createElement("h3");
+  itemStoreName.innerText = item.name.toUpperCase();
+  itemStoreLI.append(itemStoreName);
 
   const itemStoreDiv = document.createElement("div");
   itemStoreDiv.setAttribute("class", "store--item-icon");
@@ -14,6 +17,10 @@ function createStoreItem(item) {
   itemStoreImg.setAttribute("alt", item.name);
   itemStoreDiv.append(itemStoreImg);
 
+  const itemPrice = document.createElement("p");
+  itemPrice.innerText = "£" + item.price.toFixed(2);
+  itemStoreLI.append(itemPrice);
+
   const addToCartButton = document.createElement("button");
   addToCartButton.innerText = "Add to cart";
   addToCartButton.addEventListener("click", () => {
@@ -21,7 +28,6 @@ function createStoreItem(item) {
       addToCart(item);
     }
   });
-
   itemStoreLI.append(addToCartButton);
 
   return itemStoreLI;

@@ -12,19 +12,32 @@
   <body>
     <header id="store">
       <h1>Greengrocers</h1>
-      <div class="filter">
+      <form class="filter">
+        <h4><b>FILTER</b></h4>
         <p>Fruit or Vegetable?</p>
-        <form>
-          <div class="buttonFruit">
-            <input type="radio" id="fruit" name="type" value="fruit" />
-            <label for="fruit">Fruit</label>
-          </div>
-          <div class="buttonVegetable">
-            <input type="radio" id="vegetable" name="type" value="vegetable" />
-            <label for="vegetable">Vegetable</label>
-          </div>
-        </form>
-      </div>
+        <div class="radioFruit">
+          <input type="radio" id="fruit" name="type" value="fruit" />
+          <label for="fruit">Fruit</label>
+        </div>
+        <div class="radioVegetable">
+          <input type="radio" id="vegetable" name="type" value="vegetable" />
+          <label for="vegetable">Vegetable</label>
+        </div>
+        <div class="radioAll">
+          <input type="radio" id="all" name="type" value="all" />
+          <label for="all">All</label>
+        </div>
+        <h4><b>SORT</b></h4>
+        <p>How do you want to sort?</p>
+        <div class="radioABC">
+          <input type="radio" id="abc" name="sort" value="abc" />
+          <label for="abc">ABC</label>
+        </div>
+        <div class="radioPrice">
+          <input type="radio" id="price" name="sort" value="price" />
+          <label for="price">Price</label>
+        </div>
+      </form>
       <ul class="item-list store--item-list">
         <!-- Take a look at store-item.html -->
       </ul>

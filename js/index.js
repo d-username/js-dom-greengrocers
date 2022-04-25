@@ -1,31 +1,39 @@
 import { state } from "./stateData.js";
-import { filterItems } from "./filter--Sort.js";
+import { filterItems, sortItems } from "./filter--sort.js";
 import { renderStoreItemList } from "./storeMenu.js";
 
 const storeItemList = document.querySelector(".store--item-list");
 const cartUL = document.querySelector(".cart--item-list");
 const cartQuantity = document.querySelector(".quantity-text");
 const cartTotal = document.querySelector(".total-number");
-const buttonFruit = document.querySelector(".buttonFruit");
-const buttonVegetable = document.querySelector(".buttonVegetable");
+const radioFruit = document.querySelector(".radioFruit");
+const radioVegetable = document.querySelector(".radioVegetable");
+const radioAll = document.querySelector(".radioAll");
+const radioABC = document.querySelector(".radioABC");
+const radioPrice = document.querySelector(".radioPrice");
 
 state.items.forEach((item) => {
   renderStoreItemList(item);
 });
 
-buttonFruit.addEventListener("click", () => {
+radioFruit.addEventListener("click", () => {
   filterItems();
 });
 
-buttonVegetable.addEventListener("click", () => {
+radioVegetable.addEventListener("click", () => {
   filterItems();
 });
 
-export {
-  storeItemList,
-  cartUL,
-  cartQuantity,
-  cartTotal,
-  buttonFruit,
-  buttonVegetable,
-};
+radioAll.addEventListener("click", () => {
+  filterItems();
+});
+
+radioABC.addEventListener("click", () => {
+  sortItems();
+});
+
+radioPrice.addEventListener("click", () => {
+  sortItems();
+});
+
+export { storeItemList, cartUL, cartQuantity, cartTotal };

@@ -10,8 +10,9 @@ function removeFromCart(item) {
     }
   }
   cartUL.innerHTML = "";
-  calculateCartTotal("minus", item);
   renderCard();
+  console.log(item);
+  calculateCartTotal("minus", item.item);
 }
 
 export { removeFromCart };

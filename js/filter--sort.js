@@ -2,8 +2,8 @@ import { state } from "./stateData.js";
 import { renderStoreItemList } from "./storeMenu.js";
 import { storeItemList } from "./index.js";
 
-function getRadioValue() {
-  let radio = document.getElementsByName("type");
+function getRadioValue(value) {
+  let radio = document.getElementsByName(value);
   for (let i = 0; i < radio.length; i++) {
     if (radio[i].checked) {
       return radio[i].id;
@@ -12,13 +12,65 @@ function getRadioValue() {
 }
 
 function filterItems() {
-  const type = getRadioValue();
+  const type = getRadioValue("type");
   storeItemList.innerHTML = "";
-  state.items.forEach((item) => {
-    if (item.type === type) {
+  if (type === "all") {
+    state.items.forEach((item) => {
       renderStoreItemList(item);
-    }
+    });
+  } else {
+    state.items.forEach((item) => {
+      if (item.type === type) {
+        renderStoreItemList(item);
+      }
+    });
+  }
+}
+
+function sortItems() {
+  const sort = getRadioValue("sort");
+  if (sort === "abc") {
+    sortByAbc();
+  }
+  if (sort === "price") {
+    sortByPrice();
+  }
+}
+
+function sortByAbc() {
+  const itemNames = [];
+  state.items.forEach((item) => {
+    itemNames.push(item.name);
+  });
+  const sortedNames = itemNames.sort();
+  storeItemList.innerHTML = "";
+  sortedNames.forEach((itemName) => {
+    state.items.forEach((product) => {
+      if (product.name === itemName) {
+        const theItem = product;
+        renderStoreItemList(theItem);
+      }
+    });
   });
 }
 
-export { filterItems };
+function sortByPrice() {
+  const itemPrices = [];
+  state.items.forEach((item) => {
+    itemPrices.push(item.price);
+  });
+  const sortedPrices = itemPrices.sort(function (a, b) {
+    return a - b;
+  });
+  storeItemList.innerHTML = "";
+  sortedPrices.forEach((itemPrice) => {
+    state.items.forEach((product) => {
+      if (product.price === itemPrice) {
+        const theItem = product;
+        renderStoreItemList(theItem);
+      }
+    });
+  });
+}
+
+export { filterItems, sortItems };
